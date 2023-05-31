@@ -40,7 +40,7 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
 
-  // load any saved data from localStorage //
+  // load any saved data from localStorage for each time block 9a-5p//
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10.description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -50,7 +50,7 @@ $(document).ready(function () {
   $("#hour-15 .description").val(localStorage.getItem("hour-15"));
   $("#hour-16 .description").val(localStorage.getItem("hour-16"));
   $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+  
   // displays current day on page
-
   $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
 });
