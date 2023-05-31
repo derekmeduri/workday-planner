@@ -1,13 +1,18 @@
 var today = dayjs();
 
-
 // TODO: Add a listener for click events on the save button. This code should
 // use the id in the containing time-block as a key to save the user input in
 // local storage.
 $(document).ready(function () {
   $(".saveBtn").on("click", function () {
-    var textArea = $(".description").siblings();
-    localStorage.setItem() textArea JSON.stringify();
+    var textArea = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+    // Might not need to stringify/create object. should be able to get info by row.
+    //localStorage.setItem("textArea", JSON.stringify(textArea));
+
+    console.log(textArea);
+    console.log(time);
+    localStorage.setItem(time, textArea);
     // get nearby values
   });
   // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -18,12 +23,14 @@ $(document).ready(function () {
     console.log(currentHour);
     // loop over time blocks
     $(".time-block").each(function () {
-      var timeBlock = $(this);
+      var timeBlock = $(".time-block");
 
       if (timeBlock < currentHour) {
-        $(".time-block").removeClass(".");
+        $(".time-block").removeClass(".present .future");
+      } else if (timeBlock === currentHour) {
+        $(".time-block").removeClass(".past .future");
       } else {
-        timeBlock === currentHour;
+        $(".time-block").removeClass(".present .past");
       }
     });
   }
@@ -41,6 +48,9 @@ $(document).ready(function () {
   //
 
   // load any saved data from localStorage for each time block 9a-5p//
+  // for loop using i = 8 ("hour-" + i + .description)
+  $(".decription").each;
+
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10.description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -50,7 +60,7 @@ $(document).ready(function () {
   $("#hour-15 .description").val(localStorage.getItem("hour-15"));
   $("#hour-16 .description").val(localStorage.getItem("hour-16"));
   $("#hour-17 .description").val(localStorage.getItem("hour-17"));
-  
+
   // displays current day on page
   $("#currentDay").text(today.format("dddd, MMMM D, YYYY"));
 });
