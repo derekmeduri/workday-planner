@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   // load any saved data from localStorage for each time block 9a-5p
 
-  // trying to create a for loop to run them
+  // trying to create a for loop to run them dynamically
   //
   // for loop using i = 8 ("hour-" + i + .description)
   // for (var = i = 0; i < 8; i++)
