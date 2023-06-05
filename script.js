@@ -13,16 +13,19 @@ $(document).ready(function () {
   //function to update hour and change the class of the time blocks accordingly.
   function hourUpdater() {
     var currentHour = dayjs().hour();
-    console.log(currentHour);
+    //console.log(currentHour);
     // loop over time blocks
     $(".time-block").each(function () {
-      var timeBlock = $(this).attr("id");
+      //had to add split to remove the hour from id to check value against current time.
+      var timeBlock = parseInt($(this).attr("id").split("hour-")[1]);
       console.log(timeBlock);
       if (timeBlock < currentHour) {
         $(this).addClass("future");
       } else if (timeBlock === currentHour) {
         $(this).addClass("present");
-      } else $(this).addClass("past");
+      } else {
+        $(this).addClass("past");
+      }
     });
   }
   //check the hour every 15 seconds and update the hour accordingly
@@ -31,13 +34,15 @@ $(document).ready(function () {
 
   // load any saved data from localStorage for each time block 9a-5p
 
-  //trying to create a for loop to run them
+  // trying to create a for loop to run them
   //
   // for loop using i = 8 ("hour-" + i + .description)
-  //$.each( var , function(index, value){
+  // for (var = i = 0; i < 8; i++)
+  // $.each( var , function(index, value){
 
   //}
-  //var localStorageContent = localStorage.getItem
+  // var localStorageContent = localStorage.getItem
+  //
   //
 
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
